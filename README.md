@@ -2,6 +2,36 @@
 
 This README outlines the details of collaborating on this Ember addon.
 
+## Usage
+
+```bash
+ember g action user
+```
+
+Route:
+
+```js
+export default Ember.Route.extend({
+  
+  userActions: Ember.inject.service(),
+
+  actions: {
+    userActions(){
+      return this.get('userActions').send(...arguments);
+    }
+  }
+  
+});
+```
+
+Template:
+
+```hbs
+{{#each users as |user|}}
+  {{user-editor saveAction=(route-action "userActions" "save" user)}}
+{{/each}}
+````
+
 ## Installation
 
 * `git clone <repository-url>` this repository
