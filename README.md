@@ -1,11 +1,11 @@
-# ember-action-service
+# ember-actions-service
 
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd ember-action-service`
+* `cd ember-actions-service`
 * `npm install`
 
 ## Running
