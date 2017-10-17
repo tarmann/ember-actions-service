@@ -13,7 +13,12 @@ export default Ember.Service.extend({
   send(model, action, ...options){
     const store = get(this, 'store');
     const callbackName = `on${capitalize(action)}${capitalize(get(this, 'resource'))}`;
-    return get(this, `${action}Task`).perform(store, callbackName, model, ...options);
+    const task = get(this, `${action}Task`);
+    if(!task){
+      throw new Error(`Task ${action} is undefined.`);
+    } else {
+      return task.perform(store, callbackName, model, ...options);
+    }
   },
 
   createTask: task(function * (store, callback){
