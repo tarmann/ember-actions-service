@@ -12,7 +12,8 @@ module.exports = {
         if (options.pod) {
           return path.join(options.podPath, options.locals.path, options.dasherizedModuleName);
         }
-        return 'actions';
+
+        return 'services';
       }
     };
   }

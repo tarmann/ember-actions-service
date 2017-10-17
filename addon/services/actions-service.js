@@ -1,14 +1,14 @@
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
 
-const { get, inject } = Ember;
-const { capitalize } = Ember.String;
+const {
+  get,
+  String: { capitalize }
+} = Ember;
 
 export default Ember.Service.extend({
 
   resource: null,
-
-  store: inject.service(),
 
   send(model, action, ...options){
     const store = get(this, 'store');
