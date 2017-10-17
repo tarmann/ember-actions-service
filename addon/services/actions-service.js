@@ -26,13 +26,18 @@ export default Ember.Service.extend({
     return { callback, model };
   }),
 
-  rollbackTask: task(function * (store, callback, model){
-    yield model.rollbackAttributes();
+  deleteTask: task(function * (store, callback, model){
+    yield model.destroy();
     return { callback, model };
   }),
 
-  deleteTask: task(function * (store, callback, model){
-    yield model.destroy();
+  unloadTask: task(function * (store, callback, model){
+    yield store.unloadRecord(model);
+    return { callback, model };
+  }),
+
+  rollbackTask: task(function * (store, callback, model){
+    yield model.rollbackAttributes();
     return { callback, model };
   })
 
