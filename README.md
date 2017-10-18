@@ -2,24 +2,23 @@
 
 This README outlines the details of collaborating on this Ember addon.
 
-This addon uses ember-concurrency and ember-route-action-helper.
-
 ## Usage
 
 ```bash
-ember g actions user
+ember g actions-service user
 ```
 
-Route:
+Route
 
 ```js
 import Ember from 'ember';
-import UserActionsMixin from 'frontend/mixins/user-actions-mixin';
+import UserActionsMixin from '../mixins/user-actions-mixin';
 
-export default Ember.Route.extend(UserActionsMixin, {});
+export default Ember.Route.extend(UserActionsMixin, {
+});
 ```
 
-Template:
+Template using route-actions
 
 ```hbs
 {{#each users as |user|}}
