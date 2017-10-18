@@ -1,7 +1,7 @@
 {
   "name": "ember-actions-service",
   "version": "0.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Actions services with concurrency for Ember",
   "keywords": [
     "ember-addon"
   ],
