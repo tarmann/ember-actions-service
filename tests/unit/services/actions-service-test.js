@@ -37,32 +37,19 @@ test('resource', function(assert) {
   assert.ok( this.service.get('resource'), 'user' );
 });
 
-test('.send() should route to a task', function(assert) {
+test('send', function(assert) {
   this.taskInstance = this.service.send(this.model, 'custom');
   assert.ok( this.service.customTask.perform.calledOnce, 'it routes to a task' );
-});
 
-test('.send() should return a task instance', function(assert) {
-  Ember.run(() => {
-    this.task = this.service.send(this.model, 'create');
-  });
-
+  Ember.run(() => { this.task = this.service.send(this.model, 'create'); });
   assert.equal( this.task.isSuccessful, true, 'it returns a task instance' );
-});
 
-test('.send() should throw on undefined tasks', function(assert) {
   assert.throws(() => {
     this.service.send(this.model, 'doSomething')
   }, new Error("Task doSomething is undefined."), 'throws on undefined tasks');
-});
 
-test('.send() should return a task instance', function(assert) {
-  Ember.run(() => {
-    this.task = this.service.send(this.model, 'create');
-  });
-
-  assert.equal( this.task.isSuccessful, true,
-    'it returns a task instance' );
+  Ember.run(() => { this.task = this.service.send(this.model, 'create'); });
+  assert.equal( this.task.isSuccessful, true, 'it returns a task instance' );
 });
 
 test('createTask', function(assert) {
