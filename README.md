@@ -19,11 +19,9 @@ Route
 
 ```js
 import Ember from 'ember';
-import UserActionsMixin from '../mixins/user-actions-mixin';
 import { actionsMixin } from 'ember-actions-service';
 
-export default Ember.Route.extend(actionsMixin('user'), {
-});
+export default Ember.Route.extend(actionsMixin('user'), {});
 ```
 
 Template using route-actions
