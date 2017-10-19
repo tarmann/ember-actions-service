@@ -1,6 +1,6 @@
 {
   "name": "ember-actions-service",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Actions services with concurrency for Ember",
   "keywords": [
     "ember-addon"
