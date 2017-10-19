@@ -4,6 +4,8 @@ This README outlines the details of collaborating on this Ember addon.
 
 ## Usage
 
+Blueprint:
+
 ```bash
 ember g actions-service user
 ```
@@ -22,12 +24,17 @@ export default Ember.Route.extend(actionsMixin('user'), {
 Template using route-actions
 
 ```hbs
-{{#each users as |user|}}
-  {{user-editor userActions=(route-action "userActions" user)}}
-{{/each}}
+{{user-editor saveAction=(route-action "userActions" user "save")}}
 ```
 
-<button {{action userActions "findAll"}}>Find All</button>
+## Actions
+
+* findAll
+* create
+* save
+* delete
+* unload
+* rollback
 
 ## Installation
 
