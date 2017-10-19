@@ -1,12 +1,11 @@
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
 
-const {
-  get,
-  String: { capitalize }
-} = Ember;
+const { get, String: { capitalize }, inject: { service } } = Ember;
 
 export default Ember.Service.extend({
+
+  store: service(),
 
   resource: null,
 
@@ -14,12 +13,18 @@ export default Ember.Service.extend({
     const store = get(this, 'store');
     const callbackName = `on${capitalize(action)}${capitalize(get(this, 'resource'))}`;
     const task = get(this, `${action}Task`);
+
     if(!task){
-      throw new Error(`Task ${action} is undefined.`);
+      throw new Error(`Task ${action} not found.`);
     } else {
       return task.perform(store, callbackName, model, ...options);
     }
   },
+
+  findAllTask: task(function * (store, callback){
+    const model = yield store.findAll( get(this, 'resource') );
+    return { callback, model };
+  }),
 
   createTask: task(function * (store, callback){
     const model = yield store.createRecord( get(this, 'resource') );

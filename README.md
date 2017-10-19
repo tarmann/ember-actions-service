@@ -22,9 +22,11 @@ Template using route-actions
 
 ```hbs
 {{#each users as |user|}}
-  {{user-editor saveAction=(route-action "userActions" "save" user)}}
+  {{user-editor userActions=(route-action "userActions" user)}}
 {{/each}}
 ```
+
+<button {{action userActions "findAll"}}>Find All</button>
 
 ## Installation
 
