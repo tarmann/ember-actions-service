@@ -1,7 +1,7 @@
 {
   "name": "ember-actions-service",
   "version": "0.1.3",
-  "description": "Actions services with concurrency for Ember",
+  "description": "Ember model, store and custom methods as an actions service.",
   "keywords": [
     "ember-addon"
   ],

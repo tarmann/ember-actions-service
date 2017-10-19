@@ -43,3 +43,12 @@ script:
   # Usually, it's ok to finish the test scenario without reverting
   #  to the addon's original dependency state, skipping "cleanup".
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+
+addons:
+  code_climate:
+    repo_token: cc6b9c495ece316c3869b8e7b0e5461ffe6d9446173b7510819877929e7061d0
+
+after_success:
+  - npm install -g codeclimate-test-reporter
+  - COVERAGE=true node_modules/.bin/ember test
+  - codeclimate-test-reporter < coverage/lcov.info

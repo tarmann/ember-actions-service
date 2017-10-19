@@ -1,6 +1,11 @@
 # ember-actions-service
 
-This README outlines the details of collaborating on this Ember addon.
+Ember model, store and custom methods as an actions service.
+
+[![Build Status](https://travis-ci.org/tarmann/ember-actions-service.svg)](https://travis-ci.org/tarmann/ember-actions-service)
+[![Code Climate](https://codeclimate.com/github/tarmann/ember-actions-service/badges/gpa.svg)](https://codeclimate.com/github/tarmann/ember-actions-service)
+[![Test Coverage](https://codeclimate.com/github/tarmann/ember-actions-service/badges/coverage.svg)](https://codeclimate.com/github/tarmann/ember-actions-service/coverage)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-actions-service.svg)](https://emberobserver.com/addons/ember-bundle-select)
 
 ## Usage
 
