@@ -3,8 +3,8 @@
 Ember model, store and custom methods as an actions service.
 
 [![Build Status](https://travis-ci.org/tarmann/ember-actions-service.svg)](https://travis-ci.org/tarmann/ember-actions-service)
-[![Code Climate](https://codeclimate.com/github/tarmann/ember-actions-service/badges/gpa.svg)](https://codeclimate.com/github/tarmann/ember-actions-service)
-[![Test Coverage](https://codeclimate.com/github/tarmann/ember-actions-service/badges/coverage.svg)](https://codeclimate.com/github/tarmann/ember-actions-service/coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/99c5ff8cbb04e86a3581/maintainability)](https://codeclimate.com/github/tarmann/ember-actions-service/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/99c5ff8cbb04e86a3581/test_coverage)](https://codeclimate.com/github/tarmann/ember-actions-service/test_coverage)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-actions-service.svg)](https://emberobserver.com/addons/ember-bundle-select)
 
 ## Usage
