@@ -1,4 +1,4 @@
-/* jshint node:true */
+/* eslint node:true */
 // var RSVP = require('rsvp');
 
 // For details on each option run `ember help release`
@@ -8,7 +8,7 @@ module.exports = {
   // annotation: "Release %@",
   // message: "Bumped version to %@",
   // manifest: [ 'package.json', 'bower.json', 'someconfig.json' ],
-  // publish: true,
+  publish: true,
   // strategy: 'date',
   // format: 'YYYY-MM-DD',
   // timezone: 'America/Los_Angeles',

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import UserActionsMixin from '../mixins/user-actions-mixin';
-import ProjectActionsMixin from '../mixins/project-actions-mixin';
+import { actionsMixin } from 'ember-actions-service';
 
-export default Ember.Route.extend(UserActionsMixin, ProjectActionsMixin, {
+export default Ember.Route.extend(
+  actionsMixin('user', 'project'), {
 
   actions: {
     doSomething(){

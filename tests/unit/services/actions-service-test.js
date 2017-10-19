@@ -50,8 +50,10 @@ test('send', function(assert) {
 
   this.taskName = 'doSomething';
   assert.throws(() => { this.service.send(this.store, this.model, this.taskName) },
-    new Error(`Task ${this.taskName} not found for ${this.service.get('resource')}.`),
     'throws on undefined tasks');
+
+  assert.throws(() => { this.service.send(this.store, this.model)
+  }, 'throws on empty task name');
 
   Ember.run(() => { this.task = this.service.send(this.store, this.model, 'create'); });
   assert.equal( this.task.isSuccessful, true,

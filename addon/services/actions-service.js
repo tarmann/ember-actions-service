@@ -5,17 +5,24 @@ const { get, String: { capitalize } } = Ember;
 
 export default Ember.Service.extend({
 
-  resource: null,
+  resource: '',
+
+  beforeSend(){},
+
+  afterSend(){},
 
   send(store, model, action, ...options){
-    const callbackName = `on${capitalize(action)}${capitalize(get(this, 'resource'))}`;
     const task = get(this, `${action}Task`);
+    const callback = `on${capitalize(action)}${capitalize(get(this, 'resource'))}`;
 
-    if(!task){
-      throw new Error(`Task ${action} not found for ${get(this, 'resource')}.`);
-    } else {
-      return task.perform(store, callbackName, model, ...options);
-    }
+    Ember.assert(`Invalid actions-service resource name.`, !Ember.isEmpty( get(this, 'resource') ));
+    Ember.assert(`Store invalid for ${get(this, 'resource')} actions-service.`, Ember.typeOf(action) === 'string');
+    Ember.assert(`Must provide a valid action for ${get(this, 'resource')}.`,  Ember.typeOf(action) === 'string');
+    Ember.assert(`Task ${action} not found for ${get(this, 'resource')}.`, task);
+
+    this.beforeSend(...arguments);
+
+    return task.perform(store, callback, model, ...options);
   },
 
   findAllTask: task(function * (store, callback){
