@@ -4,7 +4,8 @@ import sinon from 'sinon';
 
 moduleFor('service:actions-service', 'Unit | Service | actions service', {
   // Specify the other units that are required for this test.
-  // needs: ['service:foo']
+  // needs: ['service:store'],
+
   beforeEach(){
     this.store = {
       createRecord: sinon.spy(),
@@ -30,7 +31,8 @@ test('it exists', function(assert) {
 });
 
 test('store', function(assert) {
-  assert.ok( this.service.get('store'), 'it has access to the store' );
+  assert.ok( this.service.get('store'),
+    'it has access to the store' );
 });
 
 test('resource', function(assert) {
@@ -38,23 +40,27 @@ test('resource', function(assert) {
 });
 
 test('send', function(assert) {
-  this.taskInstance = this.service.send(this.model, 'custom');
-  assert.ok( this.service.customTask.perform.calledOnce, 'it routes to a task' );
+  this.taskInstance = this.service.send(this.store, this.model, 'custom');
+  assert.ok( this.service.customTask.perform.calledOnce,
+    'it routes to a task' );
 
-  Ember.run(() => { this.task = this.service.send(this.model, 'create'); });
-  assert.equal( this.task.isSuccessful, true, 'it returns a task instance' );
+  Ember.run(() => { this.task = this.service.send(this.store, this.model, 'create'); });
+  assert.equal( this.task.isSuccessful, true,
+    'it returns a task instance' );
 
-  assert.throws(() => {
-    this.service.send(this.model, 'doSomething')
-  }, new Error("Task doSomething is undefined."), 'throws on undefined tasks');
+  this.taskName = 'doSomething';
+  assert.throws(() => { this.service.send(this.store, this.model, this.taskName) },
+    new Error(`Task ${this.taskName} not found for ${this.service.get('resource')}.`),
+    'throws on undefined tasks');
 
-  Ember.run(() => { this.task = this.service.send(this.model, 'create'); });
-  assert.equal( this.task.isSuccessful, true, 'it returns a task instance' );
+  Ember.run(() => { this.task = this.service.send(this.store, this.model, 'create'); });
+  assert.equal( this.task.isSuccessful, true,
+    'it returns a task instance' );
 });
 
 test('createTask', function(assert) {
   Ember.run(() => {
-    this.task = this.service.send(null, 'create');
+    this.task = this.service.send(this.store, null, 'create');
   });
 
   assert.ok( this.store.createRecord.calledWith( this.service.resource ),
@@ -63,7 +69,7 @@ test('createTask', function(assert) {
 
 test('savesTask', function(assert) {
   Ember.run(() => {
-    this.task = this.service.send(this.model, 'save');
+    this.task = this.service.send(this.store, this.model, 'save');
   });
 
   assert.ok( this.model.save.calledOnce,
@@ -72,7 +78,7 @@ test('savesTask', function(assert) {
 
 test('deleteTask', function(assert) {
   Ember.run(() => {
-    this.task = this.service.send(this.model, 'delete');
+    this.task = this.service.send(this.store, this.model, 'delete');
   });
 
   assert.ok( this.model.destroy.calledOnce,
@@ -81,7 +87,7 @@ test('deleteTask', function(assert) {
 
 test('unloadTask', function(assert) {
   Ember.run(() => {
-    this.task = this.service.send(this.model, 'unload');
+    this.task = this.service.send(this.store, this.model, 'unload');
   });
 
   assert.ok( this.store.unloadRecord.calledWith(this.model),
@@ -90,7 +96,7 @@ test('unloadTask', function(assert) {
 
 test('rollbackTask', function(assert) {
   Ember.run(() => {
-    this.task = this.service.send(this.model, 'rollback');
+    this.task = this.service.send(this.store, this.model, 'rollback');
   });
 
   assert.ok( this.model.rollbackAttributes.calledOnce,

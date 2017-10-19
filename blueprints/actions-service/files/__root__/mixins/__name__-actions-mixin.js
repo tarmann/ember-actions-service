@@ -4,11 +4,14 @@ const { get, inject: { service } } = Ember;
 
 export default Ember.Mixin.create({
 
+  store: service(),
+
   <%= camelizedModuleName %>Actions: service(),
 
   actions: {
     <%= camelizedModuleName %>Actions() {
-      return get(this, '<%= camelizedModuleName %>Actions').send(...arguments);
+      const store = get(this, 'store');
+      return get(this, '<%= camelizedModuleName %>Actions').send(store, ...arguments);
     }
   }
 
