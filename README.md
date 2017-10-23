@@ -34,6 +34,7 @@ Template using route-actions
 
 The following actions perform a [ember-concurrency](https://ember-concurrency.com/) task and return a task instance.
 
+* find
 * findAll
 * create
 * save
