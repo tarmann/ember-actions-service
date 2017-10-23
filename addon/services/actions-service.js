@@ -13,7 +13,7 @@ export default Ember.Service.extend({
 
   send(store, model, action, ...options){
     const task = get(this, `${action}Task`);
-    const callback = `on${capitalize(action)}${camelize(capitalize(get(this, 'resource')))}`;
+    const callback = `on${capitalize(action)}${capitalize(camelize(get(this, 'resource')))}`;
 
     Ember.assert(`Invalid actions-service resource name.`, !Ember.isEmpty( get(this, 'resource') ));
     Ember.assert(`Store invalid for ${get(this, 'resource')} actions-service.`, Ember.typeOf(action) === 'string');
