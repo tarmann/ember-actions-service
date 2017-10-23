@@ -26,7 +26,7 @@ export default Ember.Service.extend({
   },
 
   findTask: task(function * (store, callback, id){
-    const model = yield store.find( get(this, 'resource'), id );
+    const model = yield store.findRecord( get(this, 'resource'), id );
     return { callback, model };
   }),
 
