@@ -20,7 +20,7 @@ moduleFor('service:actions-service', 'Unit | Service | actions service', {
 
     this.service = this.subject({
       store: this.store,
-      resource: 'user',
+      resource: 'user-account',
       customTask: { perform: sinon.spy() }
     });
   }
@@ -58,6 +58,14 @@ test('send', function(assert) {
   Ember.run(() => { this.task = this.service.send(this.store, this.model, 'create'); });
   assert.equal( this.task.isSuccessful, true,
     'it returns a task instance' );
+
+  let sendResponse;
+  Ember.run(() => { this.service.send(this.store, this.model, 'save', this.model).then(r => { sendResponse = r }); });
+  assert.equal( sendResponse.callback, 'onSaveUserAccount',
+    'it returns a callback' );
+  assert.equal( sendResponse.model, this.model,
+    'it returns a model' );
+
 });
 
 test('createTask', function(assert) {
