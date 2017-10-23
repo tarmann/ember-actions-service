@@ -41,6 +41,17 @@ The following actions perform a [ember-concurrency](https://ember-concurrency.co
 * unload
 * rollback
 
+## Custom Actions
+
+To implement a new action just include a new task into the service generated following the format bellow:
+
+```js
+  doSomethingTask: task(function * (store, callback, model){
+    updatedModel = yield doSomething(model);
+    return { callback, model: updatedModel };
+  })
+```
+
 ## Installation
 
 * `git clone <repository-url>` this repository
