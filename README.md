@@ -1,6 +1,6 @@
 # ember-actions-service
 
-Ember model, store and custom methods as an actions service.
+ember-actions-service is an Ember Addon to wrap common store and model methods with [ember-concurrency](https://ember-concurrency.com/) tasks and making them available as a service.
 
 [![Build Status](https://travis-ci.org/tarmann/ember-actions-service.svg)](https://travis-ci.org/tarmann/ember-actions-service)
 [![Maintainability](https://api.codeclimate.com/v1/badges/99c5ff8cbb04e86a3581/maintainability)](https://codeclimate.com/github/tarmann/ember-actions-service/maintainability)
@@ -31,6 +31,8 @@ Template using route-actions
 ```
 
 ## Actions
+
+The following actions perform a [ember-concurrency](https://ember-concurrency.com/) task and return a task instance.
 
 * findAll
 * create
