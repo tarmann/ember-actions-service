@@ -52,17 +52,6 @@ To implement a new action just include a new task into the service generated fol
   })
 ```
 
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd ember-actions-service`
-* `npm install`
-
-## Running
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
 ## Running Tests
 
 * `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
