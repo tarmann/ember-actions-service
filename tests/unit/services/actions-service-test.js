@@ -9,7 +9,8 @@ moduleFor('service:actions-service', 'Unit | Service | actions service', {
   beforeEach(){
     this.store = {
       createRecord: sinon.spy(),
-      unloadRecord: sinon.spy()
+      unloadRecord: sinon.spy(),
+      findRecord: sinon.spy()
     }
 
     this.model = {
@@ -111,5 +112,14 @@ test('rollbackTask', function(assert) {
 
   assert.ok( this.model.rollbackAttributes.calledOnce,
     'it rollbacks the model' );
+});
+
+test('findTask', function(assert) {
+  Ember.run(() => {
+    this.task = this.service.send(this.store, this.model, 'find');
+  });
+
+  assert.ok( this.store.findRecord.calledOnce,
+    'it finds the model' );
 });
 
