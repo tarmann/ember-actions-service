@@ -40,7 +40,8 @@ export default Ember.Service.extend({
     return { callback, model };
   }),
 
-  saveTask: task(function * (store, callback, model){
+  saveTask: task(function * (store, callback, _model){
+    const model = store.peekRecord( get(this, 'resource'), get(_model, 'id') );
     yield model.save();
     return { callback, model };
   }),
