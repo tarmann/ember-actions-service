@@ -9,10 +9,10 @@ moduleFor('service:actions-service', 'Unit | Service | actions service', {
 
   beforeEach(){
     this.store = {
-      peekRecord: sinon.spy(),
       createRecord: sinon.spy(),
       unloadRecord: sinon.spy(),
-      findRecord: sinon.spy()
+      findRecord: sinon.spy(),
+      peekRecord: sinon.spy()
     }
 
     this.model = {
@@ -63,12 +63,14 @@ test('send', function(assert) {
     'it returns a task instance' );
 
   let sendResponse;
-  Ember.run(() => { this.service.send(this.store, this.model, 'save', this.model).then(r => { sendResponse = r }); });
-  assert.equal( sendResponse.callback, 'onSaveUserAccount',
-    'it returns a callback' );
+  Ember.run(() => {
+    this.service.send(this.store, this.model, 'save', this.model)
+                .then(r => { sendResponse = r });
+  });
   assert.equal( sendResponse.model, this.model,
     'it returns a model' );
-
+  assert.equal( sendResponse.callback, 'onSaveUserAccount',
+    'it returns a callback' );
 });
 
 test('createTask', function(assert) {
