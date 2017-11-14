@@ -3,11 +3,13 @@ import { moduleFor, test } from 'ember-qunit';
 import sinon from 'sinon';
 
 moduleFor('service:actions-service', 'Unit | Service | actions service', {
+
   // Specify the other units that are required for this test.
   // needs: ['service:store'],
 
   beforeEach(){
     this.store = {
+      peekRecord: sinon.spy(),
       createRecord: sinon.spy(),
       unloadRecord: sinon.spy(),
       findRecord: sinon.spy()
