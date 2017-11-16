@@ -1,6 +1,6 @@
 {
   "name": "ember-actions-service",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Ember model, store and custom methods as an actions service.",
   "keywords": [
     "ember-addon"
