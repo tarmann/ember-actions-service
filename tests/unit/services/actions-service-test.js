@@ -17,7 +17,7 @@ moduleFor('service:actions-service', 'Unit | Service | actions service', {
 
     this.model = {
       save: sinon.spy(),
-      destroy: sinon.spy(),
+      destroyRecord: sinon.spy(),
       rollbackAttributes: sinon.spy()
     }
 
@@ -96,7 +96,7 @@ test('deleteTask', function(assert) {
     this.task = this.service.send(this.store, this.model, 'delete');
   });
 
-  assert.ok( this.model.destroy.calledOnce,
+  assert.ok( this.model.destroyRecord.calledOnce,
     'it deletes the model' );
 });
 
