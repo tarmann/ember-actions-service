@@ -47,7 +47,7 @@ export default Ember.Service.extend({
   }),
 
   deleteTask: task(function * (store, callback, _model){
-    const model = _model.save ? _model : store.peekRecord( get(this, 'resource'), get(_model, 'id') );
+    const model = _model.destroy ? _model : store.peekRecord( get(this, 'resource'), get(_model, 'id') );
     yield model.destroy();
     return { callback, model };
   }),
