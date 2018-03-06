@@ -35,13 +35,19 @@ export default Ember.Service.extend({
     return { callback, model };
   }),
 
-  createTask: task(function * (store, callback){
-    const model = yield store.createRecord( get(this, 'resource') );
+  createTask: task(function * (store, callback, _model, attrs){
+    const model = yield store.createRecord( get(this, 'resource'), attrs || {} );
     return { callback, model };
   }),
 
   saveTask: task(function * (store, callback, _model){
     const model = _model.save ? _model : store.peekRecord( get(this, 'resource'), get(_model, 'id') );
+    yield model.save();
+    return { callback, model };
+  }),
+
+  createAndSaveTask: task(function * (store, callback, _model, attrs){
+    const model = yield store.createRecord( get(this, 'resource'), attrs || {} );
     yield model.save();
     return { callback, model };
   }),
