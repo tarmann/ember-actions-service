@@ -1,9 +1,11 @@
-import Ember from 'ember';
+import { isEmpty, typeOf } from '@ember/utils';
+import { assert } from '@ember/debug';
+import Service from '@ember/service';
+import { get } from '@ember/object';
+import { camelize, capitalize } from '@ember/string';
 import { task } from 'ember-concurrency';
 
-const { get, String: { capitalize, camelize } } = Ember;
-
-export default Ember.Service.extend({
+export default Service.extend({
 
   resource: '',
 
@@ -15,10 +17,10 @@ export default Ember.Service.extend({
     const task = get(this, `${action}Task`);
     const callback = `on${capitalize(action)}${capitalize(camelize(get(this, 'resource')))}`;
 
-    Ember.assert(`Invalid actions-service resource name.`, !Ember.isEmpty( get(this, 'resource') ));
-    Ember.assert(`Store invalid for ${get(this, 'resource')} actions-service.`, Ember.typeOf(action) === 'string');
-    Ember.assert(`Must provide a valid action for ${get(this, 'resource')}.`,  Ember.typeOf(action) === 'string');
-    Ember.assert(`Task ${action} not found for ${get(this, 'resource')}.`, task);
+    assert(`Invalid actions-service resource name.`, !isEmpty( get(this, 'resource') ));
+    assert(`Store invalid for ${get(this, 'resource')} actions-service.`, typeOf(action) === 'string');
+    assert(`Must provide a valid action for ${get(this, 'resource')}.`,  typeOf(action) === 'string');
+    assert(`Task ${action} not found for ${get(this, 'resource')}.`, task);
 
     this.beforeSend(...arguments);
 

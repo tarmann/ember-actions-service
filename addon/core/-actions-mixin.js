@@ -1,6 +1,7 @@
-import Ember from 'ember';
-
-const { get, String: { camelize }, inject } = Ember;
+import { inject as service } from '@ember/service';
+import Mixin from '@ember/object/mixin';
+import { get } from '@ember/object';
+import { camelize } from '@ember/string';
 
 export function actionsMixin(){
 
@@ -16,7 +17,7 @@ export function actionsMixin(){
   args.forEach(function(resource) {
     let resourceName = camelize(resource);
 
-    mixin[`${resourceName}Actions`] = inject.service();
+    mixin[`${resourceName}Actions`] = service();
 
     mixin.actions[`${resourceName}Actions`] = function(){
       const store = get(this, 'store');
@@ -24,6 +25,6 @@ export function actionsMixin(){
     };
   })
 
-  return Ember.Mixin.create(mixin);
+  return Mixin.create(mixin);
 
 }
