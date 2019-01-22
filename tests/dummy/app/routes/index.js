@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import { actionsMixin } from 'ember-actions-service';
 
-export default Ember.Route.extend(
+export default Route.extend(
   actionsMixin('user', 'project'), {
 
   actions: {
