@@ -53,14 +53,21 @@ To implement a new action just include a new task into the service generated fol
   })
 ```
 
-## Running Tests
+Compatibility
+------------------------------------------------------------------------------
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
 
-## Building
 
-* `ember build`
+Installation
+------------------------------------------------------------------------------
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+```
+ember install ember-actions-service
+```
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
