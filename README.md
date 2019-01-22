@@ -18,10 +18,10 @@ ember g actions-service user
 Route
 
 ```js
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import { actionsMixin } from 'ember-actions-service';
 
-export default Ember.Route.extend(actionsMixin('user'), {});
+export default Route.extend(actionsMixin('user'), {});
 ```
 
 Template using route-actions
